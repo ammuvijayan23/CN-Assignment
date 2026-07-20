@@ -4,9 +4,9 @@
 
 | Field | Details |
 |---|---|
-| Name | |
-| Register Number | |
-| GitHub Username | |
+| Name | Ammu Vijayan|
+| Register Number |VJC24CS036|
+| GitHub Username | ammuvijayan23|
 | Class | S5 CSE |
 | College | Viswajyothi College of Engineering and Technology |
 
