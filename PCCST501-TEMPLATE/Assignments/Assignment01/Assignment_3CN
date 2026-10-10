@@ -1,0 +1,105 @@
+# Assignment 3 – Computer Networks
+
+**Course:** PCCST501  
+**Name:** Ammu Vijayan | **Roll No.:** 11 | **Class:** S5 CSE A
+
+## 1. Data-Link Layer and LLC vs MAC
+The data-link layer transfers frames between directly connected devices.
+
+- Responsibilities: Framing, MAC addressing, flow control, error control and access control.
+- **LLC:** Provides an interface to the network layer.
+- **MAC:** Handles MAC addressing and medium access.
+
+## 2. Ethernet Frame Format
+- Preamble: 7 bytes
+- SFD: 1 byte
+- Destination and source MAC: 6 bytes each
+- Type/Length: 2 bytes
+- Data: 46–1500 bytes
+- FCS: 4 bytes for CRC-32 error detection
+
+Minimum frame size is 64 bytes; maximum is 1518 bytes.
+
+## 3. Wireshark Traffic Capture
+1. Start Wireshark and capture traffic.
+2. Apply the `eth` filter.
+3. Select five frames.
+4. Record source and destination MAC addresses.
+
+**Result:** MAC addresses are identified.
+
+## 4. Switch and MAC Learning
+A switch learns source MAC addresses and their ports.
+
+- Known destination: Forward to the correct port.
+- Unknown destination: Flood to other ports.
+- Same incoming port: Filter the frame.
+- Update the MAC table when necessary.
+
+## 5. Hub, Switch and Bridge
+- **Hub:** Layer 1; sends signals to all ports.
+- **Switch:** Layer 2; forwards frames using MAC addresses.
+- **Bridge:** Layer 2; connects LAN segments and filters frames.
+
+Switches provide better performance by reducing unnecessary traffic.
+
+## 6. CSMA/CD
+CSMA/CD detects collisions in traditional shared Ethernet.
+
+Steps: Sense channel → Transmit → Detect collision → Send jam signal → Random backoff → Retransmit.
+
+Minimum frame condition: \(T_{fr} \geq 2T_p\).
+
+It is generally unnecessary in modern switched full-duplex Ethernet.
+
+## 7. CSMA/CA
+CSMA/CA avoids collisions in Wi-Fi.
+
+Steps: Sense channel → Wait DIFS → Random backoff → Optional RTS/CTS → Transmit data → Receive ACK.
+
+**Difference:** CSMA/CA avoids collisions; CSMA/CD detects them.
+
+## 8. College Laboratory WLAN Design
+- Place a dual-band access point centrally.
+- Use separate SSIDs for students, staff and guests.
+- Use 2.4 GHz for range and 5 GHz for speed.
+- Select non-overlapping channels.
+- Use separate VLANs and DHCP.
+
+| Group | Subnet | Gateway |
+|---|---|---|
+| Students | 192.168.10.0/24 | 192.168.10.1 |
+| Staff | 192.168.20.0/24 | 192.168.20.1 |
+| Guests | 192.168.30.0/24 | 192.168.30.1 |
+
+**Security:** WPA3, VLAN separation, guest restrictions, strong passwords, disabled WPS and regular updates.
+
+## 9. Mobile IP
+Mobile IP maintains communication when a device moves between networks.
+
+**Components:** Mobile Node, Home Agent, Foreign Agent, Care-of Address and Correspondent Node.
+
+**Working:**
+1. Agent discovery.
+2. Registration.
+3. Packet tunnelling through the Home Agent.
+4. Data transfer between devices.
+
+**Triangle routing:** Packets passing through the Home Agent may take a longer route.
+
+## 10. Ethernet vs Wireless LAN Frames
+
+| Feature | Ethernet | Wi-Fi |
+|---|---|---|
+| Standard | IEEE 802.3 | IEEE 802.11 |
+| Medium | Cable | Radio waves |
+| Typical header | 14 bytes | 24 bytes |
+| Addresses | Two MAC addresses | Three or four possible |
+| Access method | Traditional CSMA/CD or full duplex | CSMA/CA |
+| Error detection | CRC-32 FCS | CRC-32 FCS |
+| Wireshark filter | `eth` | `wlan` |
+
+**Procedure:** Capture packets in Wireshark, apply the appropriate filters and compare frame headers.
+
+## Conclusion
+The data-link layer handles framing, addressing and error detection. Switches improve forwarding, CSMA/CD and CSMA/CA control medium access, WLANs provide wireless connectivity, and Mobile IP supports device mobility.
